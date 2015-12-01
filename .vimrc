@@ -20,13 +20,15 @@ set directory=~/dotvim/vim_backups//
 set viewdir=~/dotvim/vim_backups//
 
 set hidden tildeop "~"
+set wildignore=*.zip
 
 set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol number lazyredraw foldenable
 set ls=2 shm=at tw=120 t_Co=256 cmdheight=2 foldmethod=syntax foldcolumn=3
 set backspace=indent,eol,start
 set list listchars=tab:»\ ,trail:·
 set smarttab shiftround et cin expandtab tabstop=4 shiftwidth=4 softtabstop=4 scrolloff=3
-set showmatch incsearch ignorecase smartcase cursorline "showcmd
+set autoread showmatch incsearch ignorecase smartcase cursorline showcmd
+
 
 " сохранение текущего буфера
 imap <F2> <Esc>:w<CR>a
