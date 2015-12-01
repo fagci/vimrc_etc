@@ -1,6 +1,8 @@
 syntax on
 color darcula
+
 let mapleader=','
+let g:mapleader=','
 
 if has('gui')
     if has('win32')
