@@ -17,8 +17,9 @@ filetype plugin indent on
 set history=1000 undolevels=1000
 let fdir="~/dotvim/vim_backups//"
 if has('win32')
-    let fdir="~\\vimfiles\\vim_backup¾\\"
+    let fdir=$TMP
 endif
+set backup
 let &backupdir = fdir
 let &directory = fdir
 let &viewdir   = fdir
