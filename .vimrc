@@ -1,5 +1,7 @@
-syntax on
+﻿syntax on
 color darcula
+
+set encoding=utf-8
 
 let mapleader=','
 let g:mapleader=','
@@ -30,7 +32,7 @@ set wildignore=*.zip
 set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol number lazyredraw foldenable
 set ls=2 shm=at tw=120 t_Co=256 cmdheight=2 foldmethod=syntax foldcolumn=3
 set backspace=indent,eol,start
-set list listchars=tab:�\ ,trail:�
+set list listchars=tab:»\ ,trail:·
 set smarttab shiftround et cin expandtab tabstop=4 shiftwidth=4 softtabstop=4 scrolloff=3
 set autoread showmatch incsearch ignorecase smartcase cursorline showcmd
 
@@ -48,4 +50,21 @@ map <C-S-left> <C-w>h
 map <C-S-right> <C-w>l
 map <C-up> <C-w>k
 map <C-down> <C-w>j
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
