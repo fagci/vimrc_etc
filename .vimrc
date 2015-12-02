@@ -6,7 +6,7 @@ let g:mapleader=','
 
 if has('gui')
     if has('win32')
-        set guifont=Courier_New:h10:cRUSSIAN::
+        set guifont=Courier_New:h9:cRUSSIAN::
     else
         set guifont=Terminus\ 10
     endif
@@ -15,13 +15,13 @@ endif
 filetype plugin indent on
 
 set history=1000 undolevels=1000
-let fdir="dotvim"
+let fdir="~/dotvim/vim_backups//"
 if has('win32')
-    let fdir="vimfiles"
+    let fdir="~\\vimfiles\\vim_backup¾\\"
 endif
-let &backupdir = '~/' . fdir . '/vim_backups//'
-let &directory = '~/' . fdir . '/vim_backups//'
-let &viewdir   = '~/' . fdir . '/vim_backups//'
+let &backupdir = fdir
+let &directory = fdir
+let &viewdir   = fdir
 
 set hidden tildeop "~"
 set wildignore=*.zip
@@ -42,7 +42,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 nmap <silent> <leader>l mzgg=G`z
 nmap <silent> <leader>x :!sh %<CR>
-
 
 map <C-S-left> <C-w>h
 map <C-S-right> <C-w>l
