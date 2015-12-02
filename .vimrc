@@ -2,6 +2,7 @@
 color darcula
 
 set encoding=utf-8
+set ffs=unix,dos,mac
 
 let mapleader=','
 let g:mapleader=','
@@ -21,6 +22,9 @@ let fdir=expand("~/dotvim/vim_backups//")
 if has('win32')
     let fdir=expand("~/vimfiles/vim_backups//")
 endif
+
+execute pathogen#infect()
+
 set backup
 let &backupdir = fdir
 let &directory = fdir
@@ -29,15 +33,15 @@ let &viewdir   = fdir
 set hidden tildeop "~"
 set wildignore=*.zip
 
-set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol number lazyredraw foldenable
+set omnifunc=syntaxcomplete#Complete
+
+set tabpagemax=15
+set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol relativenumber lazyredraw foldenable
 set ls=2 shm=at tw=120 t_Co=256 cmdheight=2 foldmethod=syntax foldcolumn=3
 set backspace=indent,eol,start
 set list listchars=tab:»\ ,trail:·
 set smarttab shiftround et cin expandtab tabstop=4 shiftwidth=4 softtabstop=4 scrolloff=3
 set autoread showmatch incsearch ignorecase smartcase cursorline showcmd
-
-imap <F2> <Esc>:w<CR>a
-nmap <F2> :w<CR>
 
 " reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -51,6 +55,18 @@ map <C-S-right> <C-w>l
 map <C-up> <C-w>k
 map <C-down> <C-w>j
 
+imap <silent> <leader><Tab> <Esc>:NERDTreeToggle<CR>a
+nmap <silent> <leader><Tab> :NERDTreeToggle<CR>
+
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+
+autocmd BufWrite * :call DeleteTrailingWS()
 
