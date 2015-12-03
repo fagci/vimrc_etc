@@ -1,11 +1,77 @@
-﻿syntax on
+﻿set nocompatible
+
+" ================ General Config ====================
+"
+set number                      "Line numbers are good
+set relativenumber
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set undolevels=1000
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+set tabpagemax=15               "Max tabs count
+set laststatus=2                "Always how status line
+set textwidth=120
+set t_Co=256                    "Terminal colors
+set cmdheight=2                 "Commands output height
+set tildeop "~"
+set esckeys                     "Function keys in Insert mode
+set shortmess=at                "Confirm msg
+set list listchars=tab:»\ ,trail:·
+set cursorline                  "Show horizontal line with cursor
+set hidden                  "Buffers in bg
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set cindent      "C indentation trigger
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+" ================ Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.zip
+set omnifunc=syntaxcomplete#Complete
+
+" ================ Syntax ===========================
+
+syntax on
+filetype plugin indent on
 color darcula
+
+" ================ Default file specs ===============
 
 set encoding=utf-8
 set ffs=unix,dos,mac
 
+" ================ Map leader symbol ================
+
 let mapleader=','
 let g:mapleader=','
+
+" ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
 
 if has('gui')
     if has('win32')
@@ -15,34 +81,24 @@ if has('gui')
     endif
 endif
 
-filetype plugin indent on
+" ================ Scrolling ========================
 
-set history=1000 undolevels=1000
-let fdir=expand("~/dotvim/vim_backups//")
-if has('win32')
-    let fdir=expand("~/vimfiles/vim_backups//")
-endif
+set scrolloff=3         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+set showmatch
 
 execute pathogen#infect()
 
-set backup
-let &backupdir = fdir
-let &directory = fdir
-let &viewdir   = fdir
+" ================ Mappings =========================
 
-set hidden tildeop "~"
-set wildignore=*.zip
-
-set omnifunc=syntaxcomplete#Complete
-set tabpagemax=15
-set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol number relativenumber foldenable
-set ls=2 shm=at tw=120 t_Co=256 cmdheight=2 foldmethod=syntax foldcolumn=3
-set backspace=indent,eol,start
-set list listchars=tab:»\ ,trail:·
-set smarttab shiftround et cin expandtab tabstop=4 shiftwidth=4 softtabstop=4 scrolloff=3
-set autoread showmatch incsearch ignorecase smartcase cursorline showcmd
-
-" reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
@@ -57,8 +113,6 @@ map <C-down> <C-w>j
 imap <silent> <leader><Tab> <Esc>:NERDTreeToggle<CR>a
 nmap <silent> <leader><Tab> :NERDTreeToggle<CR>
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -82,4 +136,9 @@ syntax on
 syntax include @CPP syntax/cpp.vim
 syntax region cppSnip matchgroup=Snip start="@begin=cpp@" end="@end=cpp@" contains=@CPP
 hi link Snip SpecialComment
+
+" ================ Plugin specific settings ===========
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
