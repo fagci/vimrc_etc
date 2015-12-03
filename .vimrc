@@ -76,3 +76,10 @@ source $VIMRUNTIME/delmenu.vim
 set langmenu=ru_RU.UTF-8
 source $VIMRUNTIME/menu.vim
 
+
+" Inject code in some file
+syntax on
+syntax include @CPP syntax/cpp.vim
+syntax region cppSnip matchgroup=Snip start="@begin=cpp@" end="@end=cpp@" contains=@CPP
+hi link Snip SpecialComment
+
