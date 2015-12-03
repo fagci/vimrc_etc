@@ -34,9 +34,8 @@ set hidden tildeop "~"
 set wildignore=*.zip
 
 set omnifunc=syntaxcomplete#Complete
-
 set tabpagemax=15
-set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol relativenumber lazyredraw foldenable
+set nocp ai digraph ek hid ru sc vb wmnu noeb noet nosol relativenumber foldenable
 set ls=2 shm=at tw=120 t_Co=256 cmdheight=2 foldmethod=syntax foldcolumn=3
 set backspace=indent,eol,start
 set list listchars=tab:»\ ,trail:·
@@ -68,5 +67,7 @@ func! DeleteTrailingWS()
     exe "normal `z"
 endfunc
 
+" Autocommands
 autocmd BufWrite * :call DeleteTrailingWS()
+autocmd BufNewFile,BufRead *.json set ai filetype=javascript
 
