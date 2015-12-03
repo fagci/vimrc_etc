@@ -1,7 +1,7 @@
 ﻿set nocompatible
 
 " ================ General Config ====================
-"
+
 set number                      "Line numbers are good
 set relativenumber
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -23,6 +23,7 @@ set shortmess=at                "Confirm msg
 set list listchars=tab:»\ ,trail:·
 set cursorline                  "Show horizontal line with cursor
 set hidden                  "Buffers in bg
+set ttyfast
 
 " ================ Indentation ======================
 
@@ -56,6 +57,7 @@ set omnifunc=syntaxcomplete#Complete
 syntax on
 filetype plugin indent on
 color darcula
+let g:airline_theme='tomorrow'
 
 " ================ Default file specs ===============
 
@@ -112,6 +114,12 @@ map <C-down> <C-w>j
 
 imap <silent> <leader><Tab> <Esc>:NERDTreeToggle<CR>a
 nmap <silent> <leader><Tab> :NERDTreeToggle<CR>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 
 " Delete trailing white space on save
