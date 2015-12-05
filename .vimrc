@@ -76,11 +76,11 @@ set nobackup
 set nowb
 
 if has('gui')
-    if has('win32')
-        set guifont=Courier_New:h9:cRUSSIAN::
-    else
-        set guifont=Terminus\ 10
-    endif
+  if has('win32')
+    set guifont=Courier_New:h9:cRUSSIAN::
+  else
+    set guifont=Terminus\ 10
+  endif
 endif
 
 " ================ Scrolling ========================
@@ -124,9 +124,9 @@ map <leader>tm :tabmove
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
 endfunc
 
 " Autocommands
@@ -139,14 +139,11 @@ set langmenu=ru_RU.UTF-8
 source $VIMRUNTIME/menu.vim
 
 
-" Inject code in some file
-syntax on
-syntax include @CPP syntax/cpp.vim
-syntax region cppSnip matchgroup=Snip start="@begin=cpp@" end="@end=cpp@" contains=@CPP
-hi link Snip SpecialComment
-
 " ================ Plugin specific settings ===========
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
+" ================ Testbed ============================
+
 
