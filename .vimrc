@@ -5,13 +5,19 @@ filetype off
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
 let &runtimepath .= ',' . expand(vimDir . '/bundle/vundle')
-call vundle#rc(expand(vimDir . '/bundle'))
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
 
-"Bundle 'git://github.com/gmarik/vundle.git'
+let vundle_readme=expand(vimDir . '/bundle/vundle/README.md')
 
-"Bundle 'git://github.com/kien/ctrlp.vim.git'
+let hasPlugins=1
+
+if !filereadable(vundle_readme)
+  echo "Installing Vundle..."
+  echo ""
+  execute 'silent !git clone https://github.com/gmarik/vundle "' . expand(vimDir . '/bundle/vundle') . '"'
+  let hasPlugins=0
+endif
+
+call vundle#begin(expand(vimDir . '/bundle'))
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
@@ -31,6 +37,9 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+
+call vundle#end()
+
 
 " ================ General Config ====================
 
@@ -170,6 +179,13 @@ source $VIMRUNTIME/delmenu.vim
 set langmenu=ru_RU.UTF-8
 source $VIMRUNTIME/menu.vim
 
+" ================ Install plugins if needed ==========
+
+if hasPlugins==0
+  echo 'Installing plugins...'
+  echo ''
+  execute 'BundleInstall'
+endif
 
 " ================ Plugin specific settings ===========
 
