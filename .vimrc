@@ -1,5 +1,33 @@
 ﻿set nocompatible
 
+" ================ Vundle plugins ====================
+
+let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
+let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
+call vundle#rc(expand(vimDir . '/bundle'))
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" CtrlP
+Plugin 'kien/ctrlp.vim'
+
+" NERDCommenter
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+
 " ================ General Config ====================
 
 set number                      "Line numbers are good
@@ -97,7 +125,7 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set showmatch
 
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " ================ Mappings =========================
 
