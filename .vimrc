@@ -1,16 +1,20 @@
 ﻿set nocompatible
 
 " ================ Vundle plugins ====================
-
+filetype off
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
-let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
+let &runtimepath .= ',' . expand(vimDir . '/bundle/vundle')
 call vundle#rc(expand(vimDir . '/bundle'))
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
+"Bundle 'git://github.com/gmarik/vundle.git'
+
+"Bundle 'git://github.com/kien/ctrlp.vim.git'
+
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/vundle'
 
 " Snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
