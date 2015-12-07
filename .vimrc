@@ -147,6 +147,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>l mzgg=G`z
 nmap <silent> <leader>x :!sh %<CR>
 
+imap <C-d> <Esc>YPa
+
 map <C-S-left> <C-w>h
 map <C-S-right> <C-w>l
 map <C-up> <C-w>k
