@@ -35,6 +35,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'groenewege/vim-less'
 
 call vundle#end()
 
@@ -160,6 +161,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR>
+"<space>
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
