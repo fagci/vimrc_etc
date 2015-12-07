@@ -27,16 +27,13 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 
-" CtrlP
 Plugin 'kien/ctrlp.vim'
-
-" NERDCommenter
 Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'scrooloose/nerdtree'
-
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 
