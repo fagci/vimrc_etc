@@ -1,6 +1,7 @@
 ﻿set nocompatible
 
 " ================ Vundle plugins ====================
+
 filetype off
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
@@ -37,6 +38,7 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'groenewege/vim-less'
 Plugin 'szw/vim-ctrlspace'
+Plugin 'junegunn/limelight.vim'
 
 call vundle#end()
 
@@ -57,14 +59,16 @@ set tabpagemax=15               "Max tabs count
 set laststatus=2                "Always how status line
 set textwidth=120
 set t_Co=256                    "Terminal colors
+let base16colorspace=256        "Access colors present in 256 colorspace
 set cmdheight=2                 "Commands output height
 set tildeop "~"
 set esckeys                     "Function keys in Insert mode
 set shortmess=at                "Confirm msg
-set list listchars=tab:»\ ,trail:·,extends:❯,precedes:❮
+set listchars=tab:»\ ,eol:¬,trail:·,extends:❯,precedes:❮
+set showbreak=↪
 set hidden                  "Buffers in bg
 set ttyfast
-set mat=2 " how many tenths of a second to blink
+set mat=4 " how many tenths of a second to blink
 set magic
 set cursorline
 
@@ -84,10 +88,10 @@ set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
-set foldmethod=syntax   "fold based on ...
+set foldmethod=indent   "fold based on ...
 set foldnestmax=10       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
-set foldlevel=1
+"set foldlevel=1
 
 " ================ Completion =======================
 
@@ -100,16 +104,18 @@ set omnifunc=syntaxcomplete#Complete
 
 syntax on
 filetype plugin indent on
-color darcula
+colorscheme darcula
 let g:airline_theme='tomorrow'
 
-"highlight Special ctermbg=NONE " TODO: DOES NOT WORKS make the highlighting of eols less annoying
-"highlight SpecialKey ctermbg=NONE " make the highlighting of tabs less annoying
+" TODO: erwrwwrwr
+" FIXme: wewwret etet
 
 highlight Normal ctermbg=235
 
+let g:limelight_conceal_ctermfg = 'gray'
+
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-match Todo 'TODO:'
+match Todo 'TODO\:'
 
 " ================ Default file specs ===============
 
@@ -149,8 +155,6 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set showmatch
 
-"execute pathogen#infect()
-
 " ================ Mappings =========================
 
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -175,6 +179,15 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" moving up and down work as you would expect
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> ^ g^
+nnoremap <silent> $ g$
+
+nmap <leader><return> :set list!<cr>
+nmap <leader>f :Limelight!!<cr>
+
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR>
 "<space>
 
@@ -186,8 +199,28 @@ func! DeleteTrailingWS()
 endfunc
 
 " Autocommands
-autocmd BufWrite * :call DeleteTrailingWS()
-autocmd BufNewFile,BufRead *.json set ai filetype=javascript
+if has('autocmd') && !exists('autocommands_loaded')
+  let autocommands_loaded = 1
+  autocmd BufWrite * :call DeleteTrailingWS()
+  autocmd BufNewFile,BufRead *.json set ai filetype=javascript
+
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab indentkeys-=*<return>
+  autocmd FileType *.md.js :call SyntasticReset<cr>
+  autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
+
+  " automatically resize panes on resize
+  autocmd VimResized * exe 'normal! \<c-w>='
+  "autocmd BufWritePost .vimrc source %
+  "autocmd BufWritePost .vimrc.local source %
+  " save all files on focus lost, ignoring warnings about untitled buffers
+  autocmd FocusLost * silent! wa
+  autocmd BufNewFile,BufRead *.svg set filetype=xml
+
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
+endif
 
 " Отображение кириллицы в меню
 source $VIMRUNTIME/delmenu.vim
