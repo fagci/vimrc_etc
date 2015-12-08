@@ -62,9 +62,13 @@ set tildeop "~"
 set esckeys                     "Function keys in Insert mode
 set shortmess=at                "Confirm msg
 set list listchars=tab:»\ ,trail:·
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set cursorline                  "Show horizontal line with cursor
 set hidden                  "Buffers in bg
 set ttyfast
+set mat=2 " how many tenths of a second to blink
+set magic
+
 
 " ================ Indentation ======================
 
@@ -82,9 +86,10 @@ set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
+set foldmethod=syntax   "fold based on ...
+set foldnestmax=10       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
+set foldlevel=1
 
 " ================ Completion =======================
 
@@ -99,6 +104,12 @@ syntax on
 filetype plugin indent on
 color darcula
 let g:airline_theme='tomorrow'
+
+highlight Special ctermbg=NONE " TODO: DOES NOT WORKS make the highlighting of eols less annoying
+highlight SpecialKey ctermbg=NONE " make the highlighting of tabs less annoying
+
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+match Todo 'TODO:'
 
 " ================ Default file specs ===============
 
