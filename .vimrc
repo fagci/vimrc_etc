@@ -104,7 +104,11 @@ filetype plugin indent on
 color darcula
 let g:airline_theme='tomorrow'
 
+highlight Special ctermbg=NONE " TODO: DOES NOT WORKS make the highlighting of eols less annoying
+highlight SpecialKey ctermbg=NONE " make the highlighting of tabs less annoying
+
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+match Todo 'TODO:'
 
 " ================ Default file specs ===============
 
