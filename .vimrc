@@ -36,6 +36,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'groenewege/vim-less'
+Plugin 'szw/vim-ctrlspace'
 
 call vundle#end()
 
