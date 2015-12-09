@@ -42,13 +42,17 @@ Plugin 'ap/vim-css-color', { 'for': 'css' }
 Plugin 'mattn/emmet-vim', { 'for': 'html' }
 Plugin 'gregsexton/MatchTag', { 'for': 'html' }
 Plugin 'othree/html5.vim', { 'for': 'html' }
+Plugin 'sjl/gundo.vim'
 call vundle#end()
 filetype plugin indent on
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:pasta_disabled_filetypes = ['coffee']
-
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 " ### }}} ###
 
 " ### General Config ### {{{
@@ -198,6 +202,7 @@ nnoremap <silent> $ g$
 
 nmap <leader><return> :set list!<cr>
 nmap <leader>f :Limelight!!<cr>
+nnoremap <leader>u :GundoToggle<CR>
 
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR>
 "<space>
