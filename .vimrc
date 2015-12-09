@@ -1,8 +1,9 @@
-﻿set nocompatible
+﻿" vim: foldenable
 
-" ================ Vundle plugins ====================
+set nocompatible
 
-filetype off
+" ### Vundle plugins ### {{{
+
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
 let &runtimepath .= ',' . expand(vimDir . '/bundle/vundle')
@@ -18,16 +19,12 @@ if !filereadable(vundle_readme)
   let hasPlugins=0
 endif
 
+filetype off
 call vundle#begin(expand(vimDir . '/bundle'))
-
-" let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
-
-" Snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -45,11 +42,16 @@ Plugin 'ap/vim-css-color', { 'for': 'css' }
 Plugin 'mattn/emmet-vim', { 'for': 'html' }
 Plugin 'gregsexton/MatchTag', { 'for': 'html' }
 Plugin 'othree/html5.vim', { 'for': 'html' }
-
 call vundle#end()
+filetype plugin indent on
 
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:pasta_disabled_filetypes = ['coffee']
 
-" ================ General Config ====================
+" ### }}} ###
+
+" ### General Config ### {{{
 
 set number                      "Line numbers are good
 set relativenumber
@@ -80,62 +82,15 @@ set magic
 set cursorline
 set clipboard=unnamedplus
 
-" ================ Indentation ======================
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+set showmatch
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
-set cindent      "C indentation trigger
-
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
-
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on ...
-set foldnestmax=10       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-"set foldlevel=1
-
-" ================ Completion =======================
-
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.zip
-set omnifunc=syntaxcomplete#Complete
-
-" ================ Syntax ===========================
-
-syntax on
-filetype plugin indent on
-colorscheme darcula
-let g:airline_theme='tomorrow'
-
-" TODO: erwrwwrwr
-" FIXme: wewwret etet
-
-highlight Normal ctermbg=235
-
-let g:limelight_conceal_ctermfg = 'gray'
-
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-match Todo 'TODO\:'
-
-" ================ Default file specs ===============
-
-set encoding=utf-8
-set ffs=unix,dos,mac
-
-" ================ Map leader symbol ================
-
-let mapleader=','
-let g:mapleader=','
-
-" ================ Turn Off Swap Files ==============
+set scrolloff=3         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
 
 set noswapfile
 set nobackup
@@ -149,21 +104,69 @@ if has('gui')
   endif
 endif
 
-" ================ Scrolling ========================
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ru_RU.UTF-8
+source $VIMRUNTIME/menu.vim
 
-set scrolloff=3         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+" ### }}} ###
 
-" ================ Search ===========================
+" ### Indentation ### {{{
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
-set showmatch
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set cindent      "C indentation trigger
 
-" ================ Mappings =========================
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" }}}
+
+" ### Folds ### {{{
+
+set foldmethod=marker   "fold based on ...
+set foldnestmax=10       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+"set foldlevel=1
+
+" }}}
+
+" ### Completion ### {{{
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.zip
+set omnifunc=syntaxcomplete#Complete
+
+" }}}
+
+" ### Syntax ### {{{
+
+syntax on
+colorscheme darcula
+let g:airline_theme='tomorrow'
+highlight Normal ctermbg=235
+let g:limelight_conceal_ctermfg = 'gray'
+
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" }}}
+
+" ### Default file specs ### {{{
+
+set encoding=utf-8
+set ffs=unix,dos,mac
+
+" }}}
+
+" ### Mappings ### {{{
+
+let mapleader=','
+let g:mapleader=','
 
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -199,14 +202,19 @@ nmap <leader>f :Limelight!!<cr>
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR>
 "<space>
 
-" Delete trailing white space on save
+" }}}
+
+" ### Functions ### {{{
+
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 
-" Autocommands
+" }}}
+
+" ### Autocommands ### {{{
 if has('autocmd') && !exists('autocommands_loaded')
   let autocommands_loaded = 1
   autocmd BufWrite * :call DeleteTrailingWS()
@@ -230,12 +238,9 @@ if has('autocmd') && !exists('autocommands_loaded')
   let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
 endif
 
-" Отображение кириллицы в меню
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ru_RU.UTF-8
-source $VIMRUNTIME/menu.vim
+" }}}
 
-" ================ Install plugins if needed ==========
+" ### Install plugins if needed ### {{{
 
 if hasPlugins==0
   echo 'Installing plugins...'
@@ -243,12 +248,5 @@ if hasPlugins==0
   execute 'BundleInstall'
 endif
 
-" ================ Plugin specific settings ===========
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:pasta_disabled_filetypes = ['coffee']
-
-" ================ Testbed ============================
-
+" }}}
 
