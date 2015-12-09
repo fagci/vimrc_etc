@@ -36,9 +36,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'groenewege/vim-less'
+Plugin 'groenewege/vim-less', { 'for': 'less' }
 Plugin 'szw/vim-ctrlspace'
 Plugin 'junegunn/limelight.vim'
+Plugin 'sickill/vim-pasta'
+Plugin 'ervandew/supertab'
+Plugin 'ap/vim-css-color', { 'for': 'css' }
+Plugin 'mattn/emmet-vim', { 'for': 'html' }
+Plugin 'gregsexton/MatchTag', { 'for': 'html' }
+Plugin 'othree/html5.vim', { 'for': 'html' }
 
 call vundle#end()
 
@@ -68,9 +74,11 @@ set listchars=tab:»\ ,eol:¬,trail:·,extends:❯,precedes:❮
 set showbreak=↪
 set hidden                  "Buffers in bg
 set ttyfast
+set lazyredraw
 set mat=4 " how many tenths of a second to blink
 set magic
 set cursorline
+set clipboard=unnamedplus
 
 " ================ Indentation ======================
 
@@ -239,6 +247,8 @@ endif
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:pasta_disabled_filetypes = ['coffee']
 
 " ================ Testbed ============================
+
 
