@@ -205,7 +205,7 @@ nmap <leader>f :Limelight!!<cr>
 nnoremap <leader>u :GundoToggle<CR>
 
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR>
-"<space>
+imap {<CR> {<CR>}<Esc>O<Tab>
 
 " }}}
 
