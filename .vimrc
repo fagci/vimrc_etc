@@ -76,7 +76,7 @@ set cmdheight=2                 "Commands output height
 set tildeop "~"
 set esckeys                     "Function keys in Insert mode
 set shortmess=at                "Confirm msg
-set listchars=tab:»\ ,eol:¬,trail:·,extends:❯,precedes:❮
+set listchars=tab:»\ ,eol:¶,trail:·,extends:❯,precedes:❮,nbsp:×
 set showbreak=↪
 set hidden                  "Buffers in bg
 set ttyfast

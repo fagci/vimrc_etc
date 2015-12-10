@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/fagci/Desktop/ThreeJs_testing'
-let g:netrw_dirhist_2='/home/fagci/Desktop/ThreeJs_testing/js'
-let g:netrw_dirhist_3='/home/fagci/Desktop/ThreeJs_testing/js/app'
-let g:netrw_dirhist_4='/home/fagci/Desktop/ThreeJs_testing/js/app/objects'
-let g:netrw_dirhist_5='/home/fagci/Desktop/ThreeJs_testing/js/app'
-let g:netrw_dirhist_6='/home/fagci/Desktop/ThreeJs_testing/js/app/entity'
-let g:netrw_dirhist_7='/home/fagci/Desktop/ThreeJs_testing/js/app/entity/player'
