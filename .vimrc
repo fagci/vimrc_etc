@@ -1,5 +1,5 @@
 ﻿" vim: foldenable
-
+" use Lekton, bro
 set nocompatible
 
 " ### Vundle plugins ### {{{
@@ -46,12 +46,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'godlygeek/tabular'
+Plugin 'HarnoRanaivo/vim-neatfoldtext'
 
 call vundle#end()
 filetype plugin indent on
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
+let g:airline_powerline_fonts = 1
 let g:pasta_disabled_filetypes = ['coffee']
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -109,7 +111,7 @@ if has('gui')
   if has('win32')
     set guifont=Courier_New:h9:cRUSSIAN::
   else
-    set guifont=Terminus\ 10
+"    set guifont=Terminus\ 10
   endif
 endif
 
@@ -259,3 +261,7 @@ endif
 
 " }}}
 
+" ### TESTBED ### {{{
+hi! def TestHL ctermbg=red
+match TestHL //
+" }}}
