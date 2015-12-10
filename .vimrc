@@ -25,7 +25,7 @@ Plugin 'gmarik/vundle'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
@@ -43,6 +43,9 @@ Plugin 'mattn/emmet-vim', { 'for': 'html' }
 Plugin 'gregsexton/MatchTag', { 'for': 'html' }
 Plugin 'othree/html5.vim', { 'for': 'html' }
 Plugin 'sjl/gundo.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
+
 call vundle#end()
 filetype plugin indent on
 
