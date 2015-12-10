@@ -33,18 +33,19 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'groenewege/vim-less', { 'for': 'less' }
 Plugin 'szw/vim-ctrlspace'
 Plugin 'junegunn/limelight.vim'
 Plugin 'sickill/vim-pasta'
 Plugin 'ervandew/supertab'
-Plugin 'ap/vim-css-color', { 'for': 'css' }
-Plugin 'mattn/emmet-vim', { 'for': 'html' }
+Plugin 'ap/vim-css-color',    { 'for': 'css'  }
+Plugin 'mattn/emmet-vim',     { 'for': 'html' }
 Plugin 'gregsexton/MatchTag', { 'for': 'html' }
-Plugin 'othree/html5.vim', { 'for': 'html' }
+Plugin 'othree/html5.vim',    { 'for': 'html' }
+Plugin 'groenewege/vim-less', { 'for': 'less' }
 Plugin 'sjl/gundo.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
@@ -60,48 +61,49 @@ let g:ctrlp_working_path_mode = 0
 
 " ### General Config ### {{{
 
-set number                      "Line numbers are good
+set number                     " Line numbers are good
 set relativenumber
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
+set backspace=indent,eol,start " Allow backspace in insert mode
+set history=1000               " Store lots of :cmdline history
 set undolevels=1000
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set guicursor=a:blinkon0        "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set tabpagemax=15               "Max tabs count
-set laststatus=2                "Always how status line
+set showcmd                    " Show incomplete cmds down the bottom
+set showmode                   " Show current mode down the bottom
+set guicursor=a:blinkon0       " Disable cursor blink
+set visualbell                 " No sounds
+set autoread                   " Reload files changed outside vim
+set tabpagemax=15              " Max tabs count
+set laststatus=2               " Always how status line
 set textwidth=120
-set t_Co=256                    "Terminal colors
-let base16colorspace=256        "Access colors present in 256 colorspace
-set cmdheight=2                 "Commands output height
-set tildeop "~"
-set esckeys                     "Function keys in Insert mode
-set shortmess=at                "Confirm msg
-set listchars=tab:»\ ,eol:¶,trail:·,extends:❯,precedes:❮,nbsp:×
-set showbreak=↪
-set hidden                  "Buffers in bg
+set t_Co=256                   " Terminal colors
+let base16colorspace=256       " Access colors present in 256 colorspace
+set cmdheight=2                " Commands output height
+set esckeys                    " Function keys in Insert mode
+set shortmess=at               " Confirm msg
+set hidden                     " Buffers in bg
 set ttyfast
 set lazyredraw
-set mat=4 " how many tenths of a second to blink
+set mat=4                      " how many tenths of a second to blink
 set magic
 set cursorline
 set clipboard=unnamedplus
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+set incsearch                  " Find the next match as we type the search
+set hlsearch                   " Highlight searches by default
+set ignorecase                 " Ignore case when searching...
+set smartcase                  " ...unless we type a capital
 set showmatch
 
-set scrolloff=3         "Start scrolling when we're 8 lines away from margins
+set scrolloff=3                " Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
 set noswapfile
 set nobackup
 set nowb
+
+set listchars=tab:»\ ,eol:¶,trail:·,extends:❯,precedes:❮,nbsp:×
+set showbreak=↪
+set tildeop "~"
 
 if has('gui')
   if has('win32')
@@ -135,10 +137,9 @@ set linebreak    "Wrap lines at convenient points
 
 " ### Folds ### {{{
 
-set foldmethod=marker   "fold based on ...
-set foldnestmax=10       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-"set foldlevel=1
+set foldmethod=marker " fold based on ...
+set foldnestmax=10    " deepest fold is 3 levels
+set nofoldenable      " dont fold by default
 
 " }}}
 
