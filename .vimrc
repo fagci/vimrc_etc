@@ -53,7 +53,7 @@ let g:pasta_disabled_filetypes = ['coffee']
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-" ### }}} ###
+" }}}
 
 " ### General Config ### {{{
 
@@ -112,7 +112,7 @@ source $VIMRUNTIME/delmenu.vim
 set langmenu=ru_RU.UTF-8
 source $VIMRUNTIME/menu.vim
 
-" ### }}} ###
+" }}}
 
 " ### Indentation ### {{{
 
