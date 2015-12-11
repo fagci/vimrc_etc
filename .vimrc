@@ -1,5 +1,5 @@
 ﻿" vim: foldenable
-
+" use Lekton, bro
 set nocompatible
 
 " ### Vundle plugins ### {{{
@@ -23,9 +23,9 @@ filetype off
 call vundle#begin(expand(vimDir . '/bundle'))
 
 " Core, preload
-Plugin 'gmarik/vundle'           " plugin manager
-Plugin 'tpope/vim-fugitive'      " work with git repository
-Plugin 'ryanoasis/vim-devicons'  " icons for nerdtree, airline, ...
+Plugin 'gmarik/vundle'                           " plugin manager
+Plugin 'tpope/vim-fugitive'                      " work with git repository
+Plugin 'ryanoasis/vim-devicons'                  " icons for nerdtree, airline, ...
 
 " Frequently using
 Plugin 'scrooloose/nerdcommenter'                " comment lines easily
@@ -64,8 +64,9 @@ Plugin 'othree/html5.vim', { 'for': 'html' }     " html5 + svg completion
 call vundle#end()
 filetype plugin indent on
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
+let g:airline_powerline_fonts = 1
 let g:pasta_disabled_filetypes = ['coffee']
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -75,42 +76,39 @@ let g:ctrlp_working_path_mode = 0
 
 " ### General Config ### {{{
 
-set number                      "Line numbers are good
+set number                     " Line numbers are good
 set relativenumber
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
+set backspace=indent,eol,start " Allow backspace in insert mode
+set history=1000               " Store lots of :cmdline history
 set undolevels=1000
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set guicursor=a:blinkon0        "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set tabpagemax=15               "Max tabs count
-set laststatus=2                "Always how status line
+set showcmd                    " Show incomplete cmds down the bottom
+set showmode                   " Show current mode down the bottom
+set guicursor=a:blinkon0       " Disable cursor blink
+set visualbell                 " No sounds
+set autoread                   " Reload files changed outside vim
+set tabpagemax=15              " Max tabs count
+set laststatus=2               " Always how status line
 set textwidth=120
-set t_Co=256                    "Terminal colors
-let base16colorspace=256        "Access colors present in 256 colorspace
-set cmdheight=2                 "Commands output height
-set tildeop "~"
-set esckeys                     "Function keys in Insert mode
-set shortmess=at                "Confirm msg
-set listchars=tab:»\ ,eol:¶,trail:·,extends:❯,precedes:❮,nbsp:×
-set showbreak=↪
-set hidden                  "Buffers in bg
+set t_Co=256                   " Terminal colors
+let base16colorspace=256       " Access colors present in 256 colorspace
+set cmdheight=2                " Commands output height
+set esckeys                    " Function keys in Insert mode
+set shortmess=at               " Confirm msg
+set hidden                     " Buffers in bg
 set ttyfast
 set lazyredraw
-set mat=4 " how many tenths of a second to blink
+set mat=4                      " how many tenths of a second to blink
 set magic
 set cursorline
 set clipboard=unnamedplus
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+set incsearch                  " Find the next match as we type the search
+set hlsearch                   " Highlight searches by default
+set ignorecase                 " Ignore case when searching...
+set smartcase                  " ...unless we type a capital
 set showmatch
 
-set scrolloff=3         "Start scrolling when we're 8 lines away from margins
+set scrolloff=3                " Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
@@ -118,11 +116,15 @@ set noswapfile
 set nobackup
 set nowb
 
+set listchars=tab:»\ ,eol:¶,trail:·,extends:❯,precedes:❮,nbsp:×
+set showbreak=↪
+set tildeop "~"
+
 if has('gui')
   if has('win32')
     set guifont=Courier_New:h9:cRUSSIAN::
   else
-    set guifont=Terminus\ 10
+"    set guifont=Terminus\ 10
   endif
 endif
 
@@ -150,10 +152,9 @@ set linebreak    "Wrap lines at convenient points
 
 " ### Folds ### {{{
 
-set foldmethod=marker   "fold based on ...
-set foldnestmax=10       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-"set foldlevel=1
+set foldmethod=marker " fold based on ...
+set foldnestmax=10    " deepest fold is 3 levels
+set nofoldenable      " dont fold by default
 
 " }}}
 
@@ -281,3 +282,7 @@ endif
 
 " }}}
 
+" ### TESTBED ### {{{
+hi! def TestHL ctermbg=red
+match TestHL //
+" }}}
