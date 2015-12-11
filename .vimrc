@@ -1,5 +1,6 @@
 ﻿" vim: foldenable
-" use Lekton, bro
+" Note: use "{Font name} Mono [...]" font instead "{Font name} Mono [...] Mono"!
+
 set nocompatible
 
 " ### Vundle plugins ### {{{
@@ -23,43 +24,44 @@ filetype off
 call vundle#begin(expand(vimDir . '/bundle'))
 
 " Core, preload
-Plugin 'gmarik/vundle'                           " plugin manager
-Plugin 'tpope/vim-fugitive'                      " work with git repository
-Plugin 'ryanoasis/vim-devicons'                  " icons for nerdtree, airline, ...
+Plugin 'gmarik/vundle'                                  " plugin manager
+Plugin 'tpope/vim-fugitive'                             " work with git repository
+Plugin 'ryanoasis/vim-devicons'                         " icons for nerdtree, airline, ...
 
 " Frequently using
-Plugin 'scrooloose/nerdcommenter'                " comment lines easily
-Plugin 'scrooloose/nerdtree'                     " files tree
-Plugin 'Xuyuanp/nerdtree-git-plugin'             " show git status in NERDTree
-Plugin 'bling/vim-airline'                       " cool statusbar
-Plugin 'tpope/vim-surround'                      " surround something with something
-Plugin 'terryma/vim-multiple-cursors'            " makes additional cursor for same words
-Plugin 'godlygeek/tabular'                       " align thisgs vertically
+Plugin 'scrooloose/nerdcommenter'                       " comment lines easily
+Plugin 'scrooloose/nerdtree'                            " files tree
+Plugin 'Xuyuanp/nerdtree-git-plugin'                    " show git status in NERDTree
+Plugin 'bling/vim-airline'                              " cool statusbar
+Plugin 'tpope/vim-surround'                             " surround something with something
+Plugin 'terryma/vim-multiple-cursors'                   " makes additional cursor for same words
+Plugin 'godlygeek/tabular'                              " align thisgs vertically
 
 " Moderate use
-Plugin 'ctrlpvim/ctrlp.vim'                      " fuzzy search in nested directories
-Plugin 'tomtom/tlib_vim'                         " for snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'            " for snipmate
-Plugin 'garbas/vim-snipmate'                     " snippets
+Plugin 'ctrlpvim/ctrlp.vim'                             " fuzzy search in nested directories
+Plugin 'tomtom/tlib_vim'                                " for snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'                   " for snipmate
+Plugin 'garbas/vim-snipmate'                            " snippets
 
 " Need em?
-"Plugin 'sjl/gundo.vim'                          " graphical undo (u)
-"Plugin 'junegunn/limelight.vim'                 " code flashlight
+"Plugin 'sjl/gundo.vim'                                 " graphical undo (u)
+"Plugin 'junegunn/limelight.vim'                        " code flashlight
 
 " Does not works properly / tuning needed
-Plugin 'sickill/vim-pasta'                       " paste with right indentation
-Plugin 'ervandew/supertab'                       " tab completion insert mode
-Plugin 'szw/vim-ctrlspace'                       " quick navigate between tabs/files/buffers, workspaces
+Plugin 'sickill/vim-pasta'                              " paste with right indentation
+Plugin 'ervandew/supertab'                              " tab completion insert mode
+Plugin 'szw/vim-ctrlspace'                              " quick navigate between tabs/files/buffers, workspaces
 
 " Try it later
-" Plugin 'scrooloose/syntastic'                  " automatic syntax checking
+" Plugin 'scrooloose/syntastic'                         " automatic syntax checking
 
 " File specific
-Plugin 'groenewege/vim-less', { 'for': 'less' }  " less supply
-Plugin 'ap/vim-css-color', { 'for': 'css' }      " highlight colors in css code
-Plugin 'mattn/emmet-vim', { 'for': 'html' }      " zencoding replacement
-Plugin 'gregsexton/MatchTag', { 'for': 'html' }  " hl matching tags
-Plugin 'othree/html5.vim', { 'for': 'html' }     " html5 + svg completion
+Plugin 'kchmck/vim-coffee-script', { 'for': 'coffee' }  " coffee supply
+Plugin 'groenewege/vim-less',      { 'for': 'less'   }  " less supply
+Plugin 'ap/vim-css-color',         { 'for': 'css'    }  " highlight colors in css code
+Plugin 'mattn/emmet-vim',          { 'for': 'html'   }  " zencoding replacement
+Plugin 'gregsexton/MatchTag',      { 'for': 'html'   }  " hl matching tags
+Plugin 'othree/html5.vim',         { 'for': 'html'   }  " html5 + svg completion
 
 call vundle#end()
 filetype plugin indent on
@@ -68,10 +70,16 @@ filetype plugin indent on
 " let g:airline_right_sep=''
 let g:airline_powerline_fonts = 1
 let g:pasta_disabled_filetypes = ['coffee']
+
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+
+" emmet settings
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 " }}}
 
 " ### General Config ### {{{
@@ -284,5 +292,5 @@ endif
 
 " ### TESTBED ### {{{
 hi! def TestHL ctermbg=red
-match TestHL //
+match TestHL /\%80v./
 " }}}
