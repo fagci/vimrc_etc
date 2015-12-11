@@ -21,30 +21,45 @@ endif
 
 filetype off
 call vundle#begin(expand(vimDir . '/bundle'))
-Plugin 'gmarik/vundle'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'groenewege/vim-less', { 'for': 'less' }
-Plugin 'szw/vim-ctrlspace'
-Plugin 'junegunn/limelight.vim'
-Plugin 'sickill/vim-pasta'
-Plugin 'ervandew/supertab'
-Plugin 'ap/vim-css-color', { 'for': 'css' }
-Plugin 'mattn/emmet-vim', { 'for': 'html' }
-Plugin 'gregsexton/MatchTag', { 'for': 'html' }
-Plugin 'othree/html5.vim', { 'for': 'html' }
-Plugin 'sjl/gundo.vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ryanoasis/vim-devicons'
+
+" Core, preload
+Plugin 'gmarik/vundle'           " plugin manager
+Plugin 'tpope/vim-fugitive'      " work with git repository
+Plugin 'ryanoasis/vim-devicons'  " icons for nerdtree, airline, ...
+
+" Frequently using
+Plugin 'scrooloose/nerdcommenter'                " comment lines easily
+Plugin 'scrooloose/nerdtree'                     " files tree
+Plugin 'Xuyuanp/nerdtree-git-plugin'             " show git status in NERDTree
+Plugin 'bling/vim-airline'                       " cool statusbar
+Plugin 'tpope/vim-surround'                      " surround something with something
+Plugin 'terryma/vim-multiple-cursors'            " makes additional cursor for same words
+Plugin 'godlygeek/tabular'                       " align thisgs vertically
+
+" Moderate use
+Plugin 'ctrlpvim/ctrlp.vim'                      " fuzzy search in nested directories
+Plugin 'tomtom/tlib_vim'                         " for snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'            " for snipmate
+Plugin 'garbas/vim-snipmate'                     " snippets
+
+" Need em?
+"Plugin 'sjl/gundo.vim'                          " graphical undo (u)
+"Plugin 'junegunn/limelight.vim'                 " code flashlight
+
+" Does not works properly / tuning needed
+Plugin 'sickill/vim-pasta'                       " paste with right indentation
+Plugin 'ervandew/supertab'                       " tab completion insert mode
+Plugin 'szw/vim-ctrlspace'                       " quick navigate between tabs/files/buffers, workspaces
+
+" Try it later
+" Plugin 'scrooloose/syntastic'                  " automatic syntax checking
+
+" File specific
+Plugin 'groenewege/vim-less', { 'for': 'less' }  " less supply
+Plugin 'ap/vim-css-color', { 'for': 'css' }      " highlight colors in css code
+Plugin 'mattn/emmet-vim', { 'for': 'html' }      " zencoding replacement
+Plugin 'gregsexton/MatchTag', { 'for': 'html' }  " hl matching tags
+Plugin 'othree/html5.vim', { 'for': 'html' }     " html5 + svg completion
 
 call vundle#end()
 filetype plugin indent on
@@ -202,6 +217,14 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
+
+" move line up-down
+nnoremap <A-down> :m .+1<CR>==
+nnoremap <A-up> :m .-2<CR>==
+inoremap <A-down> <Esc>:m .+1<CR>==gi
+inoremap <A-up> <Esc>:m .-2<CR>==gi
+vnoremap <A-down> :m '>+1<CR>gv=gv
+vnoremap <A-up> :m '<-2<CR>gv=gv
 
 nmap <leader><return> :set list!<cr>
 nmap <leader>f :Limelight!!<cr>
