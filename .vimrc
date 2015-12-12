@@ -291,6 +291,8 @@ endif
 " }}}
 
 " ### TESTBED ### {{{
-hi! def TestHL ctermbg=red
+hi def TestHL ctermbg=red
 match TestHL /\%80v./
+hi def InvironmentVariable ctermfg=green
+match InvironmentVariable /\$[A-z\_]\+/
 " }}}
