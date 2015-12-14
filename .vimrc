@@ -291,9 +291,9 @@ endif
 " }}}
 
 " ### Load local config ### {{{
-let l:settingsFile = a:dirname . '/.vimrc.local'
-if filereadable(l:settingsFile)
-  exec ':source' . l:settingsFile
+let localSettingsFile = expand(vimDir . '/.vimrc.local')
+if filereadable(localSettingsFile)
+  exec ':source' . localSettingsFile
 endif
 " }}}
 
