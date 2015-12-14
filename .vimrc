@@ -47,6 +47,10 @@ Plugin 'garbas/vim-snipmate'                            " snippets
 "Plugin 'sjl/gundo.vim'                                 " graphical undo (u)
 "Plugin 'junegunn/limelight.vim'                        " code flashlight
 
+
+Plugin 'dbext.vim'
+
+
 " Does not works properly / tuning needed
 Plugin 'sickill/vim-pasta'                              " paste with right indentation
 Plugin 'ervandew/supertab'                              " tab completion insert mode
@@ -302,6 +306,53 @@ hi def TestHL ctermbg=red
 match TestHL /\%80v./
 hi def InvironmentVariable ctermfg=green
 match InvironmentVariable /\$[A-z\_]\+/
+
+func! MenuMove(d)
+  if a:d == 'up'
+    echo 'HIGH'
+  elseif a:d == 'down'
+    echo 'LOW'
+  endif
+endfunc
+
+func! FM()
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  setlocal nonumber norelativenumber noshowcmd nocursorline
+
+  call setline(1, '> Item 1')
+  call setline(2, '  Item 2')
+
+  syn clear
+  syn match MenuItem /  .*/
+  syn match MenuItemSelected /> .*/
+  hi def MenuItem ctermfg=black ctermbg=white
+  hi def MenuItemSelected ctermfg=white ctermbg=black
+
+  " bind movement keys
+
+  map <silent> <buffer> j :call MenuMove("down")<CR>
+  map <silent> <buffer> k :call MenuMove("up")<CR>
+
+  " unbind unnecessary keys
+
+  map <silent> <buffer> <Down> j
+  map <silent> <buffer> <Up> k
+  map <buffer> h <Nop>
+  map <buffer> l <Nop>
+  map <buffer> <Left> <Nop>
+  map <buffer> <Right> <Nop>
+  map <buffer> i <Nop>
+  map <buffer> a <Nop>
+  map <buffer> I <Nop>
+  map <buffer> A <Nop>
+  map <buffer> o <Nop>
+  map <buffer> O <Nop>
+
+  1
+endfunc
+
+
 " }}}
 
 
