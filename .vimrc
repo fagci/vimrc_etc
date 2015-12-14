@@ -132,7 +132,7 @@ if has('gui')
   if has('win32')
     set guifont=Courier_New:h9:cRUSSIAN::
   else
-"    set guifont=Terminus\ 10
+    "    set guifont=Terminus\ 10
   endif
 endif
 
@@ -290,9 +290,18 @@ endif
 
 " }}}
 
+" ### Load local config ### {{{
+let l:settingsFile = a:dirname . '/.vimrc.local'
+if filereadable(l:settingsFile)
+  exec ':source' . l:settingsFile
+endif
+" }}}
+
 " ### TESTBED ### {{{
 hi def TestHL ctermbg=red
 match TestHL /\%80v./
 hi def InvironmentVariable ctermfg=green
 match InvironmentVariable /\$[A-z\_]\+/
 " }}}
+
+
