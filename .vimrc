@@ -47,10 +47,6 @@ Plugin 'garbas/vim-snipmate'                            " snippets
 "Plugin 'sjl/gundo.vim'                                 " graphical undo (u)
 "Plugin 'junegunn/limelight.vim'                        " code flashlight
 
-
-Plugin 'dbext.vim'
-
-
 " Does not works properly / tuning needed
 Plugin 'sickill/vim-pasta'                              " paste with right indentation
 Plugin 'ervandew/supertab'                              " tab completion insert mode
