@@ -180,10 +180,14 @@ set omnifunc=syntaxcomplete#Complete
 syntax on
 colorscheme darcula
 let g:airline_theme='tomorrow'
-highlight Normal ctermbg=235
-let g:limelight_conceal_ctermfg = 'gray'
+hi Normal ctermbg=235
+hi Folded ctermbg=236
+hi LineNr ctermbg=237 ctermfg=244
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+hi def TestHL ctermbg=red
+match TestHL /\%80v./
 
 " }}}
 
@@ -298,10 +302,6 @@ endif
 " }}}
 
 " ### TESTBED ### {{{
-hi def TestHL ctermbg=red
-match TestHL /\%80v./
-hi def InvironmentVariable ctermfg=green
-match InvironmentVariable /\$[A-z\_]\+/
 
 func! MenuMove(d)
   if a:d == 'up'
@@ -347,7 +347,6 @@ func! FM()
 
   1
 endfunc
-
 
 " }}}
 
