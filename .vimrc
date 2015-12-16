@@ -53,7 +53,7 @@ Plugin 'ervandew/supertab'                              " tab completion insert 
 Plugin 'szw/vim-ctrlspace'                              " quick navigate between tabs/files/buffers, workspaces
 
 " Try it later
-" Plugin 'scrooloose/syntastic'                         " automatic syntax checking
+Plugin 'scrooloose/syntastic'                         " automatic syntax checking
 
 " File specific
 Plugin 'kchmck/vim-coffee-script', { 'for': 'coffee' }  " coffee supply
@@ -80,6 +80,8 @@ let g:ctrlp_working_path_mode = 0
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
+" syntastic
+let g:syntastic_javascript_checkers = ['eslint']
 " }}}
 
 " ### General Config ### {{{
