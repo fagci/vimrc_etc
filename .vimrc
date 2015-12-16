@@ -186,8 +186,8 @@ hi LineNr ctermbg=237 ctermfg=244
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-hi def TestHL ctermbg=red
-match TestHL /\%80v./
+"hi def TestHL ctermbg=red
+"match TestHL /\%80v./
 
 " }}}
 

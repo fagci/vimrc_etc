@@ -36,11 +36,16 @@ syn region bbcodeUnderlineItalicBold contained start="\[b\]" end="\[/b\]"me=e-4 
 
 syn region bbcodeUrl start="\[url\s*[=\]]" end="\[/url\]"me=e-6 contains=@NoSpell,bbcodeTag
 
+match bbcodeSpoiler /\[[/]\{0,1\}spoiler[^\]]\{1,\}\]/
+
 hi link bbcodeTag Identifier
 hi link bbcodeItem Statement
 hi link bbcodeArgument Type
 hi link bbcodeValue Constant
 hi link bbcodeUrl Underlined
+
+hi link bbcodeSpoiler bbcodeSpoilerBg
+hi def bbcodeSpoilerBg ctermbg=white
 
 hi link bbcodeBoldUnderlineItalic bbcodeBoldItalicUnderline
 hi link bbcodeItalicBold bbcodeBoldItalic
