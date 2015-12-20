@@ -133,14 +133,14 @@ set tildeop "~"
 if has('gui')
   if has('win32')
     set guifont=Courier_New:h9:cRUSSIAN::
+    source $VIMRUNTIME/delmenu.vim
+    set langmenu=ru_RU.UTF-8
+    source $VIMRUNTIME/menu.vim
   else
     "    set guifont=Terminus\ 10
   endif
 endif
 
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ru_RU.UTF-8
-source $VIMRUNTIME/menu.vim
 
 " }}}
 
