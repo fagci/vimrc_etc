@@ -181,10 +181,11 @@ set omnifunc=syntaxcomplete#Complete
 
 syntax on
 colorscheme darcula
-let g:airline_theme='tomorrow'
-hi Normal ctermbg=235
-hi Folded ctermbg=236
-hi LineNr ctermbg=237 ctermfg=244
+let g:airline_theme='ubaryd'
+hi Normal ctermbg=NONE
+hi Folded ctermbg=NONE
+hi NonText ctermbg=NONE
+hi LineNr ctermbg=NONE ctermfg=244
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
